@@ -266,7 +266,7 @@ scoreboard = False
 people = []
 user = Player()
 user.name = 0
-#user.score = 0
+user.score = 0
 users = []
 ##############################################################################
 #                                 GAME LOOP                                  #
@@ -433,7 +433,7 @@ while True:
                         user.name = user.name + "Z"
                 if event.key == pygame.K_BACKSPACE:
                     user.name = user.name[:-1]
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE and user.name != 0:
                     users.append(user) 
                     gameState = "Menu"
                     
@@ -689,7 +689,8 @@ while True:
         text = font5.render('(MAX 10 CHARACTERS)', True, (0,255,0))
         screen.blit(text, [width * 0.05, height * 0.56])
         
-        text = font5.render(user.name, True, (255,255,255))
+        if user.name != 0:
+            text = font5.render(user.name, True, (255,255,255))
         screen.blit(text, [width * 0.6, height * 0.525])
 
         text = font5.render('Hit "ESC" to return to menu and save username', True, (255,255,255))
